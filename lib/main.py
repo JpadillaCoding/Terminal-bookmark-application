@@ -1,12 +1,20 @@
 from peewee import *
 
-db = PostgresqlDatabase(
-    'bookmark',
+postgres_db = PostgresqlDatabase(
+    'postgres',
     user='postgres',
     password='',
-    host='localhost',
-    port='5432'
 )
+
+postgres_db.execute_sql('CREATE DATABASE "bookmark"')
+
+db = PostgresqlDatabase(
+    'bookmark', 
+    user='postgres', 
+    password='',
+    host='localhost', 
+    port='5432'
+    )
 db.connect()
 
 
@@ -22,7 +30,7 @@ class Bookmark(BaseModel):
 
 
 db.create_tables([Bookmark])
-
+db.close()
 
 def home_page():
     print("\n" + "-"*50)
