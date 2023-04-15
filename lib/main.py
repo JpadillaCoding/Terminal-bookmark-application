@@ -27,19 +27,18 @@ db.create_tables([Bookmark])
 def home_page():
     print("\n" + "-"*50)
     print("Welcome to your Bookmark collector!")
-    print("Homepage navigations: \n#1 Create a new Bookmark \n#2 Go to your Bookmark collection")
+    print("Homepage navigations: \n#1 Create a new Bookmark \n#2 Go to your Bookmark collection \n#3 Exit")
     print("-"*50)
 
     homepage_response = None
 
-    while homepage_response not in [1, 2]:
+    while homepage_response not in [1, 2,3 ]:
         homepage_response = int(
             input("Type in the page you'd like to navigate to: "))
 
-        if homepage_response == 1:
-            create_bookmark()
-        elif homepage_response == 2:
-            bookmarks()
+        if homepage_response == 1: create_bookmark()
+        elif homepage_response == 2: bookmarks()
+        elif homepage_response == 3: exit()
 
 
 def create_bookmark():
@@ -51,12 +50,17 @@ def create_bookmark():
     bookmark = Bookmark(title=title, url=url, description=description)
     bookmark.save()
     print(f"{title} has been saved!")
-    home_page()
+
+    create_another = input("Would you like to create another bookmark? (y/n)")
+    if create_another == 'y':
+        create_bookmark()
+    else:
+        home_page()
 
 
 def bookmarks():
     print("Bookmarks page: ")
-    print("#1 Show all bookmarks \n#2 Search by name ")
+    print("#1 Show all bookmarks \n#2 Search by name \n#3 Home \n#4 Exit")
     bookmark_response = None
 
     while bookmark_response not in [1, 2]:
@@ -72,20 +76,20 @@ def bookmarks():
                     f"Title: {bookmark.title}: \nURL: {bookmark.url} \nDescription: {bookmark.description}")
                 print("\n" + "="*50)
             home_page()
-        elif bookmark_response == 2:
-            search_by_title()
+        elif bookmark_response == 2: search_by_title()
+        elif bookmark_response == 3: home_page()
+        elif bookmark_response == 4: exit()
 
 
 def search_by_title():
+
     search_title = input("What is the title of the bookmark? ")
     bookmark = Bookmark.get(Bookmark.title == search_title)
-    print(
-        f"Title: {bookmark.title} \nURL: {bookmark.url} \nDescription: {bookmark.description}")
+    print(f"Title: {bookmark.title} \nURL: {bookmark.url} \nDescription: {bookmark.description}")
+
     anotherSearch = input("Would you like to make another Search? (y/n) ")
-    if anotherSearch == 'y':
-        search_by_title()
-    else:
-        home_page()
+    if anotherSearch == 'y': search_by_title()
+    else: home_page()
 
 
 home_page()
