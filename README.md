@@ -18,16 +18,12 @@ pipenv shell
 ```
 psql
 ```
-4. Create the PostgreSQL database.
-```
-CREATE DATABASE bookmark;
-```
 5. Check to make sure the database is made, then navigate to it. 
 ```
 \l
 \c boookmark
 ```
-6. On your Pipenv terminal, launch the program! Program instructions are shown once launched. 
+5. On your Pipenv terminal, launch the program! Program instructions are shown once launched. 
 ```
 python [FilePath]
 ```
