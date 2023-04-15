@@ -1,7 +1,7 @@
 # Python Bookmark Directory 
 
 ## Intro
-This application replicates a Bookmark directory that displays the title, description, and the URL. PeeWee and PostgreSQL are used to manage the data. 
+This application replicates a Bookmark directory that displays the title, description, and URL. PeeWee and PostgreSQL are used to manage the data. 
 
 ## Installation 
 * This guide assumes the user already has PostgreSQL and Pipenv set up.
@@ -14,7 +14,7 @@ git clone [LINK]
 ```
 pipenv shell
 ```
-3. On a seperate terminal, launch PostgresSQL shell.
+3. On a separate terminal, launch the PostgreSQL shell.
 ```
 psql
 ```
