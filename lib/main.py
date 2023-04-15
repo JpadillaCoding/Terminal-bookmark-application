@@ -1,16 +1,16 @@
 from peewee import *
 
-
 def home_page():
-
+    print("\n" + "-"*50)
     print("Welcome to your Bookmark collector!")
     print("Homepage navigations: \n#1 Create a new Bookmark \n#2 Go to your Bookmark collection")
+    print("-"*50)
 
     homepage_response = None
 
     while homepage_response not in [1, 2]:
         homepage_response = int(
-            input("Type in the page you'd like to navigate to"))
+            input("Type in the page you'd like to navigate to: "))
 
         if homepage_response == 1:
             create_bookmark()
